@@ -38,7 +38,8 @@
     "glimmer-analyzer": "^0.3.3",
     "glimmer-native": "0.0.2",
     "nativescript-theme-core": "^1.0.6",
-    "tns-core-modules": "^5.4.0"
+    "tns-core-modules": "^5.4.0",
+    "nativescript-ui-sidedrawer": "6.0.0"
   },
   "devDependencies": {
     "@types/qunit": "^2.0.31",
