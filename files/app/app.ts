@@ -43,6 +43,6 @@ setPropertyDidChange(() => {
   app.scheduleRerender();
 });
 
-app.renderComponent('<%= component %>', app.rootFrame, null);
+// app.renderComponent('<%= component %>', app.rootFrame, null);
 
 app.boot();
