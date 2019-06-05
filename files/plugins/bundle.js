@@ -1,5 +1,6 @@
 const readFile = require('fs').readFile;
 const join = require('path').join;
+const sep = require('path').sep;
 const Debug = require('debug');
 const precompile = require('@glimmer/compiler').precompile;
 const Component = require('@glimmer/opcode-compiler').Component;
@@ -65,7 +66,7 @@ module.exports = class Bundle {
 
   async addTemplate(specifier, location, path, templateSource) {
     const length = this.templates.length;
-    const nameArray = path.split("/");
+    const nameArray = path.split(sep);
     const name = nameArray[nameArray.length -2];
     this.templates.push({
       name,
@@ -78,7 +79,7 @@ module.exports = class Bundle {
   async addComponent(specifier, location) {
     const length = this.components.length;
     const componentLocation = join(this.options.dist, location);
-    const nameArray = componentLocation.split("/");
+    const nameArray = componentLocation.split(sep);
     const name = nameArray[nameArray.length -2];
 
     console.log(location);
