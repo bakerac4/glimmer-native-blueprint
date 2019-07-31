@@ -1,18 +1,15 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es2016",
     "module": "es2015",
-    "inlineSourceMap": true,
-    "inlineSources": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "types": [
-      "qunit"
-    ]
+    "types": ["qunit"],
+    "lib": ["es6", "dom"],
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["app/*"]
+    }
   },
-  "exclude": [
-    "node_modules",
-    "tmp",
-    "dist"
-  ]
+  "exclude": ["node_modules", "tmp", "dist"]
 }
