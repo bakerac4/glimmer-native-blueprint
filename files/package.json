@@ -36,7 +36,7 @@
     "@glimmer/vm": "^0.41.0",
     "@glimmer/wire-format": "^0.41.0",
     "glimmer-analyzer": "^0.3.3",
-    "glimmer-native": "https://github.com/bakerac4/glimmer-native.git#cleanup",
+    "glimmer-native": "0.0.4",
     "nativescript-theme-core": "^1.0.6",
     "tns-core-modules": "^6.0.1"
   },
