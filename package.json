@@ -1,6 +1,6 @@
 {
   "name": "glimmer-native-blueprint",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Ember CLI blueprint for initializing a new Glimmer Native application.",
   "main": "index.js",
   "scripts": {
