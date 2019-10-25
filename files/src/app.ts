@@ -2,7 +2,10 @@ import { setPropertyDidChange } from '@glimmer/tracking';
 import Application from 'glimmer-native';
 import { knownFolders } from 'tns-core-modules/file-system';
 
-
+// @ts-ignore
+// @ts-ignore
+// import * as imageCache from 'nativescript-web-image-cache';
+// @ts-ignore
 let appFolder = knownFolders.currentApp();
 const components = [];
 const addComponents = () => {
@@ -32,7 +35,9 @@ const addHelpers = () => {
 addComponents();
 addHelpers();
 const app = new Application(appFolder, components, helpers);
+
 setPropertyDidChange(() => {
-  app.scheduleRerender();
+    app.scheduleRerender();
 });
+
 app.boot('<%= component %>');

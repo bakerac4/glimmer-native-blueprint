@@ -11,7 +11,8 @@
     "start": "ember server",
     "lint:hbs": "ember-template-lint .",
     "test": "ember test && yarn run lint:ts && yarn run lint:hbs",
-    "lint:ts": "tslint -c tslint.json 'src/**/*.ts' -t codeFrame"
+    "lint:ts": "tslint -c tslint.json 'src/**/*.ts' -t codeFrame",
+    "debug": "tns debug ios --debug-brk"
   },
   "dependencies": {
     "@glimmer/application": "^0.13.0",
@@ -38,9 +39,10 @@
     "glimmer-analyzer": "^0.3.3",
     "glimmer-native": "^0.0.5",
     "nativescript-theme-core": "^1.0.6",
-    "tns-core-modules": "^6.0.1"
+    "tns-core-modules": "^6.0.7"
   },
   "devDependencies": {
+    "@simple-dom/interface": "^1.4.0",
     "@types/qunit": "^2.0.31",
     "broccoli-asset-rev": "^2.5.0",
     "ember-cli": "^3.9.0",
@@ -52,18 +54,19 @@
     "ember-cli-uglify": "^2.0.0-beta.1",
     "qunitjs": "^2.3.3",
     "typescript": "^3.4.5",
-    "nativescript-dev-webpack": "^1.0.1"
+    "nativescript-dev-webpack": "^1.0.1",
+    "tns-platform-declarations": "^6.0.6"
   },
   "engines": {
     "node": ">= 4.0"
   },
   "nativescript": {
     "id": "org.nativescript.demo",
-    "tns-ios": {
-      "version": "6.0.1"
-    },
     "tns-android": {
-      "version": "6.0.0"
+      "version": "6.1.2"
+    },
+    "tns-ios": {
+      "version": "6.1.1"
     }
   },
   "private": true

@@ -1,11 +1,11 @@
-const readFile = require('fs').readFile;
-const join = require('path').join;
-const sep = require('path').sep;
-const Debug = require('debug');
-const precompile = require('@glimmer/compiler').precompile;
-const Component = require('@glimmer/opcode-compiler').Component;
-const TEMPLATE_ONLY_COMPONENT = require('@glimmer/runtime').TEMPLATE_ONLY_COMPONENT;
-const Project = require('glimmer-analyzer').Project;
+const readFile = require("fs").readFile;
+const join = require("path").join;
+const sep = require("path").sep;
+const Debug = require("debug");
+const precompile = require("@glimmer/compiler").precompile;
+const Component = require("@glimmer/opcode-compiler").Component;
+const TEMPLATE_ONLY_COMPONENT = require("@glimmer/runtime").TEMPLATE_ONLY_COMPONENT;
+const Project = require("glimmer-analyzer").Project;
 
 // const debug = Debug('glimmer-compiler-webpack-plugin:bundle');
 
@@ -14,7 +14,7 @@ const Project = require('glimmer-analyzer').Project;
 
 const readFileAsync = function readFileAsync(filePath) {
     return new Promise((resolve, reject) => {
-        readFile(filePath, { encoding: 'utf8' }, (err, data) => {
+        readFile(filePath, { encoding: "utf8" }, (err, data) => {
             if (err) {
                 reject(err);
             } else {
@@ -147,25 +147,32 @@ module.exports = class Bundle {
         let readComponents = [];
 
         for (let specifier in project.map) {
-            let [type] = specifier.split(':');
-            if (type === 'component') {
+            let [type] = specifier.split(":");
+            if (type === "component") {
                 this.addComponent(specifier, project.map[specifier]);
-            } else if (type === 'helper') {
+            } else if (type === "helper") {
                 this.addHelper(specifier, project.map[specifier]);
             }
         }
     }
 
     async discoverTemplates() {
-        let project = new Project(this.options.inputPath);
         let readTemplates = [];
-
-        for (let specifier in project.map) {
-            let [type] = specifier.split(':');
-            if (type === 'template') {
-                let filePath = join(this.options.inputPath, project.map[specifier]);
-                readTemplates.push(Promise.all([specifier, project.map[specifier], filePath, readFileAsync(filePath)]));
+        try {
+            let project = new Project(this.options.inputPath);
+            for (let specifier in project.map) {
+                let [type] = specifier.split(":");
+                if (type === "template") {
+                    let filePath = join(this.options.inputPath, project.map[specifier]);
+                    readTemplates.push(
+                        Promise.all([specifier, project.map[specifier], filePath, readFileAsync(filePath)])
+                    );
+                }
             }
+        } catch (errors) {
+            Object.keys(errors).forEach((key) => {
+                console.log(`Discover Templates Error: ${key} - ${errors[key]}`);
+            });
         }
 
         let templates = await Promise.all(readTemplates);

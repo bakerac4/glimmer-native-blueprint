@@ -90,7 +90,7 @@ module.exports = class GlimmerNativePlugin {
     }
 
     addComponent(components, resolver) {
-        componentes.forEach((component) => {
+        components.forEach((component) => {
             const componentClass = require(component.path);
             this.resolver.addComponent(component.name, componentClass);
         });

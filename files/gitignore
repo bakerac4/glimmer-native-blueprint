@@ -1,3 +1,8 @@
 node_modules
 tmp/*
 dist
+platforms
+.DS_Store
+.idea
+.cloud
+.update_backup
